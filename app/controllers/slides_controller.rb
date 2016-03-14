@@ -1,7 +1,7 @@
 class SlidesController < ApplicationController
   before_action :slide_params, only: [:create]
   before_action :find_course, only: [:index, :create, :new, :edit, :update, :destroy]
-  before_action :find_slide, only: [:edit, :updaten, :destroy]
+  before_action :find_slide, only: [:edit, :update, :destroy]
 
   def index
     @slides = Slide.all
