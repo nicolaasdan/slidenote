@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :courses do
+    resources :slides
+  end
 
   root to: "courses#index"
 
