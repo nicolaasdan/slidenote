@@ -7,6 +7,11 @@ class SlidesController < ApplicationController
     @slides = Slide.all
   end
 
+  def overview
+    @slides = Slide.all
+    render layout: "application"
+  end
+
   def new
   	@slide = Slide.new
   end

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :courses do
-    resources :slides
+    resources :slides do
+      collection do
+        get 'overview', to: "slides#overview"
+      end
+    end
   end
 
   root to: "courses#index"
