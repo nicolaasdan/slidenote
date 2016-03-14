@@ -1,2 +1,9 @@
 <h1 class="page-header">All slides</h1>
 <%= link_to "New slide", new_course_slide_path(@course) %>
+<br>
+<% @slides.each do |slide| %>
+  <%= link_to "Edit", edit_course_slide_path(slide.course, slide)%>
+  <%= link_to "Delete", course_slide_path(slide.course, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide"} %><br>
+  <%= image_tag slide.image %><br>
+<% end %>
+
