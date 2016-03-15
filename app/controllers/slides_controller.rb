@@ -1,14 +1,15 @@
 class SlidesController < ApplicationController
   before_action :slide_params, only: [:create]
-  before_action :find_course, only: [:index, :create, :new, :edit, :update, :destroy]
+  before_action :find_course
   before_action :find_slide, only: [:edit, :update, :destroy]
-  before_action :find_slides
+  before_action :find_slides, except: [:overview]
 
   def index
   end
 
   def overview
-    @slides = Slide.all
+    @slides = Slide.where(:course_id => params[:course_id])
+    @number = @slides.all
     render layout: "application"
   end
 

@@ -1,1 +1,5 @@
 <p><%= note.comment %></p>
+<%#= note.slide_id %>
+<%#= note.id %>
+<%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
+<%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
