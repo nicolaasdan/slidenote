@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :note_params, only:[:create]
   before_action :find_slide
-  before_action :find_note, only: [:edit, :update, :destroy]
+  before_action :find_note, only: [:edit, :update, :destroy, :upvote, :downvote]
   
   def index
   end
@@ -35,6 +35,16 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     redirect_to root_path
+  end
+
+  def upvote
+    @note.upvote_from current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @note.downvote_from current_user
+    redirect_to :back
   end
 
   private

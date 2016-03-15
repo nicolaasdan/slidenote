@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :slides do
-    resources :notes
+    resources :notes do
+      member do
+        put 'like' => 'notes#upvote'
+        put 'dislike' => 'notes#downvote'
+      end
+    end
   end
 
   root to: "courses#index"
