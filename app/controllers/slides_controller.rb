@@ -2,9 +2,9 @@ class SlidesController < ApplicationController
   before_action :slide_params, only: [:create]
   before_action :find_course, only: [:index, :create, :new, :edit, :update, :destroy]
   before_action :find_slide, only: [:edit, :update, :destroy]
+  before_action :find_slides
 
   def index
-    @slides = Slide.all
   end
 
   def overview
@@ -55,5 +55,9 @@ class SlidesController < ApplicationController
 
     def find_slide
       @slide = Slide.find(params[:id])
+    end
+
+    def find_slides
+      @slides = Slide.where(course_id: params[:course_id]).paginate(page: params[:page], per_page: 1)
     end
 end

@@ -23,13 +23,24 @@
       </ul>
     </div>
   </nav>
-
+  
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  
+  <div class="col-md-6">
+    <% @slides.each do |slide| %>
+      <%= render slide.notes %>
 
-  <%= yield %>
+      <%= simple_form_for([slide, slide.notes.build]) do |f| %>
+        <%= f.input :comment %>
+        <%= f.button :submit %>
+      <% end %>
+    <% end %>
+  </div>
 
-
+  <div class="col-md-6">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

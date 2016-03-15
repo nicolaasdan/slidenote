@@ -6,6 +6,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'will_paginate', '~> 3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
