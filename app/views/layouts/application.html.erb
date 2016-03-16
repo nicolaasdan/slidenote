@@ -14,10 +14,10 @@
         <%= link_to "NotitiesApp", root_path, class: "navbar-brand" %>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Log In", new_user_session_path %></li>
         <% end %>
       </ul>
@@ -28,6 +28,7 @@
     <div class="row">  
       <div class="col-sm-3 col-md-2 sidebar">
   	    <ul class="nav nav-sidebar">
+          <li><%= link_to "Profile", edit_user_registration_path %></li>
   	      <li><%= link_to "My courses", courses_path %></li>
   	      <li><a href="">Leaderboards</a></li>
   	      <li><a href="">News</a></li>
@@ -38,8 +39,10 @@
   	    </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <div ="container">
+          <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+          <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+        </div>
 		    <%= yield %>
       </div>
     </div>
