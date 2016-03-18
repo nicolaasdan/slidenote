@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
 
   resources :courses do
@@ -19,7 +19,13 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticated :user do
+    root to: 'courses#index', as: :authenticated_root
+  end
+  
   root to: "pages#welcome"
+
+  get 'users/profile' => 'users#show', as: 'user'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
