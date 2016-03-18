@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users
 
   resources :courses do
@@ -18,7 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "courses#index"
+  root to: "pages#welcome"
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

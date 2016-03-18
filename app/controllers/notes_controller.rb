@@ -2,6 +2,7 @@ class NotesController < ApplicationController
   before_action :note_params, only:[:create]
   before_action :find_slide
   before_action :find_note, only: [:edit, :update, :destroy, :upvote, :downvote]
+  before_action :authenticate_user!
   
   def index
   end

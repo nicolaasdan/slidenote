@@ -3,6 +3,7 @@ class SlidesController < ApplicationController
   before_action :find_course
   before_action :find_slide, only: [:edit, :update, :destroy]
   before_action :find_slides, except: [:overview]
+  before_action :authenticate_user!
 
   def index
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315105039) do
+ActiveRecord::Schema.define(version: 20160317192947) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -22,11 +22,20 @@ ActiveRecord::Schema.define(version: 20160315105039) do
 
   create_table "notes", force: :cascade do |t|
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.integer  "slide_id"
+    t.integer  "cached_votes_total", default: 0
+    t.integer  "cached_votes_score", default: 0
+    t.integer  "cached_votes_up",    default: 0
+    t.integer  "cached_votes_down",  default: 0
   end
+
+  add_index "notes", ["cached_votes_down"], name: "index_notes_on_cached_votes_down"
+  add_index "notes", ["cached_votes_score"], name: "index_notes_on_cached_votes_score"
+  add_index "notes", ["cached_votes_total"], name: "index_notes_on_cached_votes_total"
+  add_index "notes", ["cached_votes_up"], name: "index_notes_on_cached_votes_up"
 
   create_table "slides", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,18 +45,19 @@ ActiveRecord::Schema.define(version: 20160315105039) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
