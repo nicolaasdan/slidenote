@@ -1,1 +1,28 @@
 <h1 class="page-header">Leaderboard</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last name</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody id="all">
+    <% @users.each do |user| %>
+      <tr>
+        <th></th>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><% unless user.give_user_score == 0%>
+        	  <%= user.give_user_score.size %>
+        	<% else %>
+        	  <%= 0 %>
+        	<% end %>
+        </td>      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

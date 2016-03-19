@@ -9,6 +9,13 @@ class PagesController < ApplicationController
   end
 
   def leaderboard
-  	render layout: 'application'
+  	@users = User.all
+  	@user = User.last
+  	@notes = Note.all
+  	@ary = Array.new
+  	@my_array = Array.new
+
+  	render layout: 'application'  
   end
 end
+

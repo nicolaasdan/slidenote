@@ -24,9 +24,11 @@
     </div>
   </nav>
   
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
+  <div class="container">
+    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+  </div>
+
   <div class="col-md-6">
     <% @slides.each do |slide| %>
       <%= render slide.notes %>

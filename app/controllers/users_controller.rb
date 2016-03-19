@@ -6,5 +6,6 @@ class UsersController < ApplicationController
   	@first_name = first	
   	@last_name = last
   end
+
 end
 

@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :note_params, only:[:create]
+  before_action :note_params, only:[:create, :update]
   before_action :find_slide
   before_action :find_note, only: [:edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!
@@ -15,19 +15,25 @@ class NotesController < ApplicationController
   	@note = Note.new(note_params)
   	@note.slide_id = @slide.id
   	@note.user_id = current_user.id
-  	if @note.save
-  	  redirect_to root_path
-  	else
-  	  render 'new'
-  	end
+    if current_user.notes.where(:slide_id => @slide).size < 1
+  	  if @note.save
+  	    redirect_to :back
+  	  else
+  	    render 'new'
+  	  end
+    else
+      redirect_to :back
+      flash[:alert] ="Only 1 note per slide allowed. Please adjust your existing note"
+    end
   end
 
   def edit
+    session[:return_to] ||= request.referer
   end
 
   def update
     if @note.update(note_params)
-      redirect_to root_path
+      redirect_to session.delete(:return_to)
     else
       render 'edit'
     end
@@ -35,7 +41,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
   def upvote
@@ -61,4 +67,5 @@ class NotesController < ApplicationController
     def find_note
       @note = @slide.notes.find(params[:id])
     end
+
 end

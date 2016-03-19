@@ -1,7 +1,16 @@
 <h1 class="page-header">Your profile</h1>
 
-<h3>Email: <%= @user.email %></h3>
-<p>First Name: <%= @first_name %></p>
-<p>Last Name: <%= @last_name %></p>
+<h2>First Name: <%= @first_name %></h2>
+<h2>Last Name: <%= @last_name %></h2>
+
+<p>
+  Total Score:
+  <% unless @user.give_user_score == 0 %>
+    <%= @user.give_user_score.size %>
+  <% else %>
+    <%= 0 %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit your profile', edit_user_registration_path %>

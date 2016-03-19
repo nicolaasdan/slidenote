@@ -1,9 +1,13 @@
 <p><%= note.user.email %></p>
-<p><%= note.comment %></p>
+<p style="white-space: pre-wrap;"><%= note.comment %></p>
 <%#= note.slide_id %>
 <%#= note.id %>
-<%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
-<%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
+
+<% if note.user_id == current_user.id %>
+  <%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
+  <%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
+<% end %>
+
 <%= link_to like_slide_note_path(note.slide, note), method: :put, class: "btn btn-default" do %>
   Upvote
   <%= note.get_upvotes.size %>
