@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
       store_origin_path
       authenticate_user!
     end
+
+    def admin?
+      self.admin == true
+    end
+
+    def adminfunc
+      redirect_to new_user_session_path unless current_user && current_user.admin?
+    end
 end

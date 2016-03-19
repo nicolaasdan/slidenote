@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :posts
+
   authenticated :user do
     root to: 'courses#index', as: :authenticated_root
   end
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   root to: "pages#welcome"
 
   get 'users/profile' => 'users#show', as: 'user'
+  get 'aboutus' => 'pages#aboutus', as: 'aboutus'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

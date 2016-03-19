@@ -31,10 +31,10 @@
           <li><%= link_to "Profile", user_path(@user) %></li>
   	      <li><%= link_to "My courses", courses_path %></li>
   	      <li><a href="">Leaderboards</a></li>
-  	      <li><a href="">News</a></li>
+  	      <li><%= link_to 'News', posts_path %></li>
   	    </ul>
   	    <ul class="nav nav-sidebar">
-  	  	  <li><a href="">About us</a></li>
+  	  	  <li><%= link_to 'About us', aboutus_path %></li>
           <li><%= link_to "New Course", new_course_path %>
   	    </ul>
       </div>

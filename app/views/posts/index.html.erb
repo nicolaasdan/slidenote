@@ -1,0 +1,14 @@
+<h1 class='page-header'>News</h1>
+
+<% if current_user.admin? %>
+  <%= link_to 'new', new_post_path %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <% if current_user.admin? %>
+    <%= link_to 'edit', edit_post_path(post) %>
+    <%= link_to 'delete', post_path(post), method: :delete, data: { confirm: "do you want to delete this post?" } %>
+  <% end %>
+  <h3><%= post.title %></h3>
+  <p><%= post.body %></p>
+<% end %>
