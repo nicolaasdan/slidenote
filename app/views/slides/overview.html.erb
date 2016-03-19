@@ -1,5 +1,18 @@
 <h1>Overview</h1>
 
+
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Chapter <span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu">
+    <% Category.all.each do |category| %>
+      <li>
+      	<%= link_to category.chapter, overview_course_slides_path(@course, category: category.chapter)%>
+      </li>
+    <% end %>
+  </ul>
+
+</li>
+
 <% @slides.each do |slide| %>
   <div class="col-md-3">
     <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %>
