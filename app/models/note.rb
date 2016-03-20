@@ -7,4 +7,8 @@ class Note < ActiveRecord::Base
   	self.get_upvotes - self.get_downvotes
   end
 
+  def ordered_notes
+  	
+  end
+
 end

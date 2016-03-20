@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   	@user_score = @my_array.sum
   end
 
+  def order_users
+    
+  end
+
   def first_name
   	@name_regex = /^([^\.@]+)\.*([^@]*)/
   	first, last = self.email.match(@name_regex).captures

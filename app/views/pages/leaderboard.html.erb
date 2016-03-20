@@ -1,6 +1,8 @@
 <h1 class="page-header">Leaderboard</h1>
 
-<table class="table table-striped">
+<h3>Most valuable User</h3>
+
+<table class="table table-striped" idd="css-serial">
   <thead>
     <tr>
       <th>#</th>
@@ -9,10 +11,11 @@
       <th>Score</th>
     </tr>
   </thead>
-  <tbody id="all">
+  <tbody>
     <% @users.each do |user| %>
       <tr>
-        <th></th>
+
+        <td></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><% unless user.give_user_score == 0%>
@@ -26,3 +29,28 @@
   </tbody>
 </table>
 
+<h3>Best comments</h3>
+
+<table class="table table-striped" idd="css-serial">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last name</th>
+      <th>Comment</th>
+      <th>Total Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notes.order("cached_votes_score DESC").limit(5).each do |note| %>
+      <tr>
+
+        <td></td>
+        <td><%= note.user.first_name %></td>
+        <td><%= note.user.last_name %></td>
+        <td><%= note.comment %></td>
+        <td><%= note.cached_votes_score %></td>      
+      </tr>
+    <% end %>
+  </tbody>
+</table>

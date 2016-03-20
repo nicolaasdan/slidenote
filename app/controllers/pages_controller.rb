@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   	@notes = Note.all
   	@ary = Array.new
   	@my_array = Array.new
+    @usernotes = current_user.notes
 
   	render layout: 'application'  
   end
