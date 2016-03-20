@@ -19,7 +19,8 @@ class NotesController < ApplicationController
   	  if @note.save
   	    redirect_to :back
   	  else
-  	    render 'new'
+  	    redirect_to :back
+        flash[:alert] = "Please make sure your note contains between 1-140 characters"
   	  end
     else
       redirect_to :back

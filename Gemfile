@@ -9,6 +9,10 @@ gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'will_paginate', '~> 3.1'
 gem 'acts_as_votable', '~> 0.10.0'
 
+group :development, :test do
+gem 'foreman'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
