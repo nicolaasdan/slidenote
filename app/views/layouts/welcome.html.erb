@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
   <div class="container-fluid">
     <div class="navbar-header">
       <%= link_to "NotitiesApp", root_path, class: "navbar-brand" %>
@@ -24,12 +24,15 @@
   </div>
 </nav>
 
-<div ="container">
-  <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-  <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
-</div>
+
 
 <div class="col-sm-6 col-sm-offset-3">
+
+  <div ="container">
+    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+  </div>
+
   <%= yield %>
 </div>
 

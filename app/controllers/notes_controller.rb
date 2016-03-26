@@ -76,5 +76,4 @@ class NotesController < ApplicationController
     def find_note
       @note = @slide.notes.find(params[:id])
     end
-
 end

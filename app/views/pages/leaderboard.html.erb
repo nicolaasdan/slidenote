@@ -1,4 +1,4 @@
- <h1 class="page-header">Leaderboard</h1>
+ <h1 class="page-header"><span class="glyphicon glyphicon-stats"></span> Leaderboard</h1>
 
 <h3>Most valuable User</h3>
 
@@ -8,6 +8,7 @@
       <th>#</th>
       <th>First Name</th>
       <th>Last name</th>
+      <th>Level</th>
       <th>Score</th>
     </tr>
   </thead>
@@ -16,11 +17,10 @@
       <tr>
 
         <td></td>
-        <td><%= link_to user.first_name, user_path(user) %></td>
-        <td><%= user.last_name %></td>
-        <td>
-          <%= user.score %>
-        </td>      
+        <td id="link"><%= link_to user.first_name, user_path(user) %></td>
+        <td><%= user.last_name %></td>        
+        <td><span class="label label-info"><%= user.level %></span></td>
+        <td><%= user.score %></td>   
       </tr>
     <% end %>
   </tbody>

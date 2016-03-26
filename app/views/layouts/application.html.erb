@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default ">
+  <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
     <div class="container-fluid">
       <div class="navbar-header">
         <%= link_to "NotitiesApp", root_path, class: "navbar-brand" %>
@@ -28,14 +28,18 @@
   <div class="container-fluid">
     <div class="row">  
       <div class="col-sm-3 col-md-2 sidebar">
-  	    <ul class="nav nav-pills nav-stacked">
-          <li><%= link_to "Profile", user_path(current_user) %></li>
-  	      <li><%= link_to "My courses", courses_path %></li>
-  	      <li><%= link_to "Leaderboard", leaderboard_path %></li>
-  	      <li><%= link_to 'News', posts_path %></li>
+  	    <ul class="nav nav-sidebar">
+          <li id="link"><%= link_to "<span class=\"glyphicon glyphicon-home\"></span> Home".html_safe, home_path %></li>
+          <br>
+  	      <li id="link"><%= link_to "<span class=\"
+glyphicon glyphicon-book\"></span> My courses".html_safe, courses_path %></li>
+          <li id="link"><%= link_to "<span class=\"glyphicon glyphicon-user\"></span> Profile".html_safe, user_path(current_user) %></li>
+  	      <li id="link"><%= link_to "<span class=\"glyphicon glyphicon-stats\"></span> Leaderboard".html_safe, leaderboard_path %></li>
+  	      <li id="link"><%= link_to "<span class=\"
+glyphicon glyphicon-bell\"></span> News".html_safe, posts_path %></li>
   	    </ul>
-  	    <ul class="nav nav-pills nav-stacked">
-  	  	  <li><%= link_to 'About us', aboutus_path %></li>
+  	    <ul class="nav nav-sidebar">
+  	  	  <li  id="bottom-links"><%= link_to 'About us', aboutus_path %></li>
   	    </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

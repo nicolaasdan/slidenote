@@ -1,6 +1,6 @@
  <div class="panel panel-default">
    <div class="panel-body">
-    <small><strong><%= note.user.first_name %></strong> [<%= note.user.level %>]</small>
+    <small><strong id="link"><%= link_to note.user.first_name, user_path(note.user) %></strong> <span class="label label-info"><%= note.user.level %></span></small>
 
     <div class="btn-group inline pull-right">
       <%= link_to like_slide_note_path(note.slide, note), method: :put, class: "btn btn-success btn-sm" do %>

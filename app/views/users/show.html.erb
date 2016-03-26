@@ -1,15 +1,26 @@
-<h1 class="page-header">Your profile</h1>
+<h1 class="page-header"><span class="glyphicon glyphicon-user"></span> <%= @first_name %></h1>
 
-<h2>First Name: <%= @first_name %></h2>
-<h2>Last Name: <%= @last_name %></h2>
+<dl class="dl-horizontal">
+  <dt>First name: </dt>
+  <dd><%=@first_name%></dd>
+  <dt>Last name: </dt>
+  <dd><%=@last_name%></dd>
+  <dt>Total score: </dt>
+  <dd><%= @user.score %></dd>
+  <dt>Level: </dt>
+  <dd><span class="label label-info"><%= @user.level %></span></dd>
+</dl>
 
-<p>Total score: <%= @user.score %></p>
+<br>
 
-<p>Level: <%= @user.level %></p>
+<h1 class"page-header"><span class="glyphicon glyphicon-stats"></span> Stats</h1>
 
-<p># Comments: <%= @user.notes.size%></p>
-
-<p>avg likes/comment: <%= @user.likes_per_comment.round(2) %></p>
+<dl class="dl-horizontal">
+  <dt># Comments: </dt>
+  <dd><%= @user.notes.size%></dd>
+  <dt>Avg likes/comment: </dt>
+  <dd><%= @user.likes_per_comment.round(2) %></dd>
+</dl>
 
 <% if @user == current_user %>
   <%= link_to 'Edit your profile', edit_user_registration_path %>

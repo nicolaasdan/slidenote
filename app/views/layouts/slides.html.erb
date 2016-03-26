@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
     <div class="container-fluid">
       <div class="navbar-header">
         <%= link_to "NotitiesApp", root_path, class: "navbar-brand" %>
@@ -29,7 +29,6 @@
     <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
   </div>
   
-  <div class="row">
   <div class="col-md-6" id="slides">
     <%= yield %>
   </div>
@@ -44,7 +43,6 @@
       <% end %>
     <% end %>
   </div>
-  </div class="row">
 
 </body>
 </html>

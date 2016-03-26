@@ -2,6 +2,11 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:leaderboard]
   layout 'welcome'
   
+  def home
+  
+    render layout: 'application'
+  end
+
   def welcome
   end
 
