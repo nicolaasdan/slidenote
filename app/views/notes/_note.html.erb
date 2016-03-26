@@ -1,19 +1,28 @@
-<p><%= note.user.email %></p>
-<p style="white-space: pre-wrap;"><%= note.comment %></p>
-<%#= note.slide_id %>
-<%#= note.id %>
+ <div class="panel panel-default">
+   <div class="panel-body">
+    <small><strong><%= note.user.first_name %></strong> [<%= note.user.level %>]</small>
 
-<% if note.user_id == current_user.id %>
-  <%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
-  <%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
-<% end %>
+    <div class="btn-group inline pull-right">
+      <%= link_to like_slide_note_path(note.slide, note), method: :put, class: "btn btn-success btn-sm" do %>
+	    <%= note.get_upvotes.size %>
+	    <span class="glyphicon glyphicon-thumbs-up"></span>
+	  <% end %>
 
-<%= link_to like_slide_note_path(note.slide, note), method: :put, class: "btn btn-default" do %>
-  Upvote
-  <%= note.get_upvotes.size %>
-<% end %>
+	  <%= link_to dislike_slide_note_path(note.slide, note), method: :put, class: "btn btn-default btn-sm" do %>
+	    <%= note.get_downvotes.size %>
+	    <span class="glyphicon glyphicon-thumbs-down"></span>
+	  <% end %>
+	</div>
 
-<%= link_to dislike_slide_note_path(note.slide, note), method: :put, class: "btn btn-default" do %>
-  Downvote
-  <%= note.get_downvotes.size %>
-<% end %>
+	<hr>
+
+    <p style="white-space: pre-wrap;"><%= note.comment %></p>
+	<%#= note.slide_id %>
+	<%#= note.id %>
+
+	<% if note.user_id == current_user.id %>
+	  <%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
+	  <%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
+	<% end %>
+  </div>
+</div>

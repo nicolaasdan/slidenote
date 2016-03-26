@@ -1,4 +1,4 @@
-<h1 class="page-header">Leaderboard</h1>
+ <h1 class="page-header">Leaderboard</h1>
 
 <h3>Most valuable User</h3>
 
@@ -12,23 +12,20 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.order(:score => :desc).limit(5).each do |user| %>
       <tr>
 
         <td></td>
-        <td><%= user.first_name %></td>
+        <td><%= link_to user.first_name, user_path(user) %></td>
         <td><%= user.last_name %></td>
-        <td><% unless user.give_user_score == 0%>
-        	  <%= user.give_user_score.size %>
-        	<% else %>
-        	  <%= 0 %>
-        	<% end %>
+        <td>
+          <%= user.score %>
         </td>      
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<!--
 <h3>Best comments</h3>
 
 <table class="table table-striped" idd="css-serial">

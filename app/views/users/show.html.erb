@@ -3,14 +3,14 @@
 <h2>First Name: <%= @first_name %></h2>
 <h2>Last Name: <%= @last_name %></h2>
 
-<p>
-  Total Score:
-  <% unless @user.give_user_score == 0 %>
-    <%= @user.give_user_score.size %>
-  <% else %>
-    <%= 0 %>
-  <% end %>
-</p>
+<p>Total score: <%= @user.score %></p>
 
+<p>Level: <%= @user.level %></p>
 
-<%= link_to 'Edit your profile', edit_user_registration_path %>
+<p># Comments: <%= @user.notes.size%></p>
+
+<p>avg likes/comment: <%= @user.likes_per_comment.round(2) %></p>
+
+<% if @user == current_user %>
+  <%= link_to 'Edit your profile', edit_user_registration_path %>
+<% end %>

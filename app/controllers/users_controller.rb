@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-  	@user = current_user
+  	@user = User.find(params[:id])
   	@name_regex = /^([^\.@]+)\.*([^@]*)/
   	first, last = @user.email.match(@name_regex).captures
   	@first_name = first	

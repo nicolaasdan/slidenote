@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   root to: "pages#welcome"
 
-  get 'users/profile' => 'users#show', as: 'user'
+  get 'users/:id' => 'users#show', as: 'user'
   get 'aboutus' => 'pages#aboutus', as: 'aboutus'
   get 'leaderboard' => 'pages#leaderboard', as: 'leaderboard'
   

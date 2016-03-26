@@ -12,11 +12,8 @@ class User < ActiveRecord::Base
   	self.notes.each do |note|
   	  @my_array.push(note.score)
   	end
-  	@user_score = @my_array.sum
-  end
-
-  def order_users
-    
+  	#@user_score = @my_array.sum
+    self.score = @my_array.sum
   end
 
   def first_name
@@ -29,6 +26,24 @@ class User < ActiveRecord::Base
   	@name_regex = /^([^\.@]+)\.*([^@]*)/
   	first, last = self.email.match(@name_regex).captures
   	return last
+  end
+
+  def check_level
+    if self.score >= 10
+      self.update(:level => "meer dan 10")
+    elsif self.score >= 5
+      self.update(:level => "meer dan 5")
+    elsif self.score >= 0
+      self.update(:level => "meer dan 0")
+    elsif self.update < 0
+      self.update(:level => "onder nul")
+    end
+  end
+
+  def likes_per_comment
+    unless self.score.nil?
+      return self.score.to_f/self.notes.size.to_f
+    end
   end
 
 end

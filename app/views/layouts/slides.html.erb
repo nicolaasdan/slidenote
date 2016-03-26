@@ -28,21 +28,23 @@
     <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
     <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
   </div>
+  
+  <div class="row">
+  <div class="col-md-6" id="slides">
+    <%= yield %>
+  </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6" id="comments">
     <% @slides.each do |slide| %>
-      <%= render slide.notes %>
+      <%= render slide.notes.order(:cached_votes_up => :desc) %>
 
       <%= simple_form_for([slide, slide.notes.build]) do |f| %>
-        <%= f.input :comment %>
+        <%= f.input :comment, label: "Add a note", required: false %>
         <%= f.button :submit %>
       <% end %>
     <% end %>
   </div>
-
-  <div class="col-md-6">
-    <%= yield %>
-  </div>
+  </div class="row">
 
 </body>
 </html>

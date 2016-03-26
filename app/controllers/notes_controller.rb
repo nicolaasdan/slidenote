@@ -47,11 +47,19 @@ class NotesController < ApplicationController
 
   def upvote
     @note.upvote_from current_user
+    if @note.vote_registered?
+      @note.user.increment!(:score)
+      @note.user.check_level
+    end
     redirect_to :back
   end
 
   def downvote
     @note.downvote_from current_user
+    if @note.vote_registered?
+      @note.user.decrement!(:score)
+      @note.user.check_level
+    end
     redirect_to :back
   end
 
