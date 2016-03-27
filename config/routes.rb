@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :posts
 
   authenticated :user do
-    root to: 'courses#index', as: :authenticated_root
+    root to: 'pages#home', as: :authenticated_root
   end
   
   root to: "pages#welcome"

@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
     if self.score >= 10
       self.update(:level => "meer dan 10")
     elsif self.score >= 5
-      self.update(:level => "meer dan 5")
+      self.update(:level => "tss 5 en 10")
     elsif self.score >= 0
-      self.update(:level => "meer dan 0")
+      self.update(:level => "tss 0 en 5")
     elsif self.update < 0
       self.update(:level => "onder nul")
     end

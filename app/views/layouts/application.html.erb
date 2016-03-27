@@ -12,7 +12,9 @@
   <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to "NotitiesApp", root_path, class: "navbar-brand" %>
+        <a class="navbar-brand" href="#" style="padding: 0; margin: 0;">
+          <%= link_to image_tag("slidenotelogo3.png", size: "115x47", alt: "Brand"), root_path %>
+        </a>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

@@ -1,1 +1,34 @@
 <h1 class="page-header">Welcome!</h1>
+
+<div class="col-sm-8">
+  <h3>Latest news</h3>
+  <p><%= @post.body %></p>
+</div>
+
+
+<div class="col-sm-4">
+  <h2><span class="glyphicon glyphicon-fire"></span> Most discussed slide</h2>
+  
+  <hr>
+  <table class="table table-striped" idd="css-serial">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Course</th>
+      <th>Chapter</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @slides.limit(5).each do |slide| %>
+      <tr>
+        <td></td>
+        <td id="link"><%= link_to slide.course.name, course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %></td>   
+        <td><%= slide.category %></td>
+        <td><strong><%= slide.notes.size %></strong></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+</div>

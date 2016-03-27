@@ -1,4 +1,11 @@
-<h1 class="page-header"><span class="glyphicon glyphicon-user"></span> <%= @first_name %></h1>
+<h1 class="page-header"><span class="glyphicon glyphicon-user"></span> <%= @first_name %>
+
+  <small>
+    <% if @user == current_user %>
+      <%= link_to 'Edit your profile', edit_user_registration_path %>
+    <% end %>
+  </small>
+</h1>
 
 <dl class="dl-horizontal">
   <dt>First name: </dt>
@@ -22,6 +29,3 @@
   <dd><%= @user.likes_per_comment.round(2) %></dd>
 </dl>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit your profile', edit_user_registration_path %>
-<% end %>

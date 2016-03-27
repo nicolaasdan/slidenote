@@ -1,12 +1,6 @@
 <% @courses.each do |course| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <h3><strong><%= course.name %></strong></h3>
 
-	  <h4><strong><%= course.name %></strong></h4>
-	  
-	</div>
-
-	<div class="panel-body">
 	  <p><%= course.description %></p>
 	  <% if current_user.admin? %>
 	    <%= link_to "Edit", edit_course_path(course) %>
@@ -14,8 +8,11 @@
 	  <% end %>
 
 	  <%#= link_to "View Slide", course_slides_path(course) %>
-	  <%= link_to "Slides", overview_course_slides_path(course), class: "btn btn-primary" %>
-	
-    </div>
-  </div>
+
+	  <%= link_to overview_course_slides_path(course), class: "btn btn-primary" do %>
+	    <span class="glyphicon glyphicon-th-large"></span>
+	    Slides
+	  <% end %>
+
+    <hr>
 <% end %>
