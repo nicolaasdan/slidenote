@@ -2,30 +2,32 @@
 
   <small>
     <% if @user == current_user %>
-      <%= link_to 'Edit your profile', edit_user_registration_path %>
+      <%= link_to 'Edit', edit_user_registration_path %>
     <% end %>
   </small>
 </h1>
 
-<dl class="dl-horizontal">
-  <dt>First name: </dt>
-  <dd><%=@first_name%></dd>
-  <dt>Last name: </dt>
-  <dd><%=@last_name%></dd>
-  <dt>Total score: </dt>
-  <dd><%= @user.score %></dd>
-  <dt>Level: </dt>
-  <dd><span class="label label-info"><%= @user.level %></span></dd>
-</dl>
+<div class="col-md-6">
+  <h4 class"page-header">Info</h4><hr>
+  <dl class="dl-horizontal">
+    <dt>First name: </dt>
+    <dd><%=@first_name%></dd>
+    <dt>Last name: </dt>
+    <dd><%=@last_name%></dd>
+    <dt>Total score: </dt>
+    <dd><%= @user.score %></dd>
+    <dt>Level: </dt>
+    <dd><span class="label label-info"><%= @user.level %></span></dd>
+  </dl>
+</div>
 
-<br>
+<div class="col-md-6">
+  <h4 class"page-header">Stats</h4><hr>
 
-<h1 class"page-header"><span class="glyphicon glyphicon-stats"></span> Stats</h1>
-
-<dl class="dl-horizontal">
-  <dt># Comments: </dt>
-  <dd><%= @user.notes.size%></dd>
-  <dt>Avg likes/comment: </dt>
-  <dd><%= @user.likes_per_comment.round(2) %></dd>
-</dl>
-
+  <dl class="dl-horizontal">
+    <dt># Comments: </dt>
+    <dd><%= @user.notes.size%></dd>
+    <dt>Avg likes/comment: </dt>
+    <dd><%= @user.likes_per_comment.round(2) %></dd>
+  </dl>
+</div>

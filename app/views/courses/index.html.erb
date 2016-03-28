@@ -9,10 +9,7 @@
 
 	  <%#= link_to "View Slide", course_slides_path(course) %>
 
-	  <%= link_to overview_course_slides_path(course), class: "btn btn-primary" do %>
-	    <span class="glyphicon glyphicon-th-large"></span>
-	    Slides
-	  <% end %>
+	  <%= link_to "Slides", overview_course_slides_path(course), class: "btn btn-primary" %>
 
     <hr>
 <% end %>

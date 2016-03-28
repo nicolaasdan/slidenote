@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326104256) do
+ActiveRecord::Schema.define(version: 20160327192330) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "chapter"
@@ -51,11 +51,12 @@ ActiveRecord::Schema.define(version: 20160326104256) do
   end
 
   create_table "slides", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "course_id"
     t.string   "image"
     t.integer  "category_id"
+    t.integer  "amount_of_notes"
   end
 
   create_table "users", force: :cascade do |t|

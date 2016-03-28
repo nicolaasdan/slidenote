@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   layout 'welcome'
   
   def home
-    @slides = Slide.all.order(:created_at => "desc")
+    @slides = Slide.all
     @post = Post.last
-    @number = Slide.all
+    @number = @slides.all
   
     render layout: 'application'
   end

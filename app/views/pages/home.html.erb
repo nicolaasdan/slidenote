@@ -1,13 +1,14 @@
 <h1 class="page-header">Welcome!</h1>
 
 <div class="col-sm-8">
-  <h3>Latest news</h3>
-  <p><%= @post.body %></p>
+  <h3>Latest news: <%= @post.title %></h3>
+  <p style="white-space: pre-wrap;"><%= @post.body %></p>
+
 </div>
 
 
 <div class="col-sm-4">
-  <h2><span class="glyphicon glyphicon-fire"></span> Most discussed slide</h2>
+  <h2 style="text-align: center"><span class="glyphicon glyphicon-fire"></span> Most discussed</h2>
   
   <hr>
   <table class="table table-striped" idd="css-serial">
@@ -20,12 +21,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @slides.limit(5).each do |slide| %>
+    <% @slides.order(:amount_of_notes => :desc).limit(5).each do |slide| %>
       <tr>
         <td></td>
-        <td id="link"><%= link_to slide.course.name, course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %></td>   
-        <td><%= slide.category %></td>
-        <td><strong><%= slide.notes.size %></strong></td>
+        <td id="link"><%= link_to slide.course.name, course_slides_path(slide.course, :page => slide.course.slides.index(slide).to_i + 1) %></td>   
+        <td><strong><%= slide.category_id %></strong></td>
+        <td><%= slide.amount_of_notes %></td>
       </tr>
     <% end %>
   </tbody>
