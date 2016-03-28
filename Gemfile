@@ -8,6 +8,8 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'devise', '~> 3.5', '>= 3.5.6'
 gem 'will_paginate', '~> 3.1'
 gem 'acts_as_votable', '~> 0.10.0'
+gem "fog"
+gem "figaro"
 
 group :development, :test do
 gem 'foreman'
