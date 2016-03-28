@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :course_params, only: [:create, :update]
   before_action :find_params, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :adminfunc, only: [:new, :create, :edit, :update, :destroy]
 
   def index
   	@courses = Course.all

@@ -7,7 +7,11 @@
   </small>
 </h1>
 
-<div class="col-md-6">
+<div class="col-md-4">
+  <%= image_tag @user.level %>
+</div>
+
+<div class="col-md-8">
   <h4 class"page-header">Info</h4><hr>
   <dl class="dl-horizontal">
     <dt>First name: </dt>
@@ -21,7 +25,7 @@
   </dl>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-12">
   <h4 class"page-header">Stats</h4><hr>
 
   <dl class="dl-horizontal">
@@ -31,3 +35,4 @@
     <dd><%= @user.likes_per_comment.round(2) %></dd>
   </dl>
 </div>
+

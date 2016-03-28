@@ -19,6 +19,7 @@ class NotesController < ApplicationController
   	  if @note.save
         @note.slide.increment!(:amount_of_notes)
   	    redirect_to :back
+        
   	  else
   	    redirect_to :back
         flash[:alert] = "Please make sure your note contains between 1-140 characters"

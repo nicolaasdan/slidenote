@@ -4,6 +4,7 @@ class SlidesController < ApplicationController
   before_action :find_slide, only: [:edit, :update, :destroy]
   before_action :find_slides, except: [:overview]
   before_action :authenticate_user!
+  before_action :adminfunc, only: [:new, :create, :edit, :update, :destroy]
 
   def index
   end
