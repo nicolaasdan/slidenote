@@ -30,11 +30,11 @@ class User < ActiveRecord::Base
 
   def check_level
     if self.score >= 10
-      self.update(:level => "meer dan 10")
+      self.update(:level => "Laureaat")
     elsif self.score >= 5
-      self.update(:level => "Student")
+      self.update(:level => "Alumnus")
     elsif self.score >= 0
-      self.update(:level => "tss 0 en 5")
+      self.update(:level => "Student")
     elsif self.update < 0
       self.update(:level => "onder nul")
     end
