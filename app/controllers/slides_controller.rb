@@ -12,11 +12,11 @@ class SlidesController < ApplicationController
   def overview 
     if params[:category].blank?
       @slides = Slide.where(:course_id => params[:course_id])
-      @number = @slides.all
+      @number = @slides.all.order(:id => :asc)
     else
       @category_id = Category.find_by(chapter: params[:category]).id
       @slides = Slide.where(:course_id => params[:course_id], :category => @category_id)
-      @number = @slides.all
+      @number = @slides.all.order(:id => :asc)
     end
     render layout: "application"
   end
