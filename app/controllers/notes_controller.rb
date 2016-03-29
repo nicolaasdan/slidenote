@@ -18,8 +18,7 @@ class NotesController < ApplicationController
     if current_user.notes.where(:slide_id => @slide).size < 1
   	  if @note.save
         @note.slide.increment!(:amount_of_notes)
-  	    redirect_to course_slides_path(@note.slide.course, :page => @note.slide.course.slides.index(@note.slide).to_i + 1)
-        
+  	    redirect_to :back        
   	  else
   	    redirect_to :back
         flash[:alert] = "Please make sure your note contains between 1-140 characters"
@@ -45,7 +44,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     @note.slide.decrement!(:amount_of_notes)
-    redirect_to course_slides_path(@note.slide.course, :page => @note.slide.course.slides.index(@slide).to_i + 1)
+    redirect_to :back
   end
 
   def upvote
