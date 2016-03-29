@@ -44,7 +44,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     @note.slide.decrement!(:amount_of_notes)
-    redirect_to :back
+    redirect_to overview_course_slides_path(@slide.course_id)
   end
 
   def upvote
