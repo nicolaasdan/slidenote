@@ -10,6 +10,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem "fog"
 gem "figaro"
+gem "rake", '~> 11.1.1'
 
 group :development, :test do
 gem 'foreman'

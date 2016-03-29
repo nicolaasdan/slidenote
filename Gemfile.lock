@@ -246,7 +246,7 @@ GEM
       activesupport (= 4.2.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (11.1.1)
+    rake (11.1.2)
     rbvmomi (1.8.2)
       builder
       nokogiri (>= 1.4.1)
@@ -318,6 +318,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.4)
   rails_12factor
+  rake (~> 11.1.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_form (~> 3.2, >= 3.2.1)
