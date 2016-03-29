@@ -34,7 +34,7 @@
   </div>
 
   <div class="col-md-6" id="comments">
-    <% @slides.each do |slide| %>
+    <% @slides.order(:id => :desc).each do |slide| %>
       <%= render slide.notes.order(:cached_votes_up => :desc) %>
 
       <%= simple_form_for([slide, slide.notes.build]) do |f| %>
