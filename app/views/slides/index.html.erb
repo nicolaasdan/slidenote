@@ -6,7 +6,7 @@
 
 <br>
 
-<% @slides.order(:id => :desc).each do |slide| %>
+<% @slides.order(:id => :asc).each do |slide| %>
 
   <% if current_user.admin? %>
     <%= link_to "Edit", edit_course_slide_path(slide.course, slide)%>
