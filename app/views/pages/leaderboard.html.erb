@@ -22,7 +22,11 @@
         <!--<td><%= user.last_name %></td>-->        
         <td><span class="label label-info"><%= user.level %></span></td>
         <td><strong><%= user.score %></strong></td>
-        <td><%= time_ago_in_words(user.notes.last.created_at) %></td>
+        <td>
+          <% unless user.notes.last.nil? %>
+            <%= time_ago_in_words(user.notes.last.created_at) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
