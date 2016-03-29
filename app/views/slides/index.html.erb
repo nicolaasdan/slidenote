@@ -3,10 +3,10 @@
 <% end %>
 
 <%= will_paginate @slides %>
-<%= @page %>
+
 <br>
 
-<% @slides.each do |slide| %>
+<% @slides.order(:id => :desc).each do |slide| %>
 
   <% if current_user.admin? %>
     <%= link_to "Edit", edit_course_slide_path(slide.course, slide)%>
