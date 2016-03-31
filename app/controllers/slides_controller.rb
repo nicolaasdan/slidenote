@@ -13,12 +13,12 @@ class SlidesController < ApplicationController
 
   def overview 
     if params[:category].blank?
-      @slides = Slide.where(:course_id => params[:course_id]).paginate(page: params[:page], per_page: 2)
+      @slides = Slide.where(:course_id => params[:course_id]).paginate(page: params[:page], per_page: 25)
       @all_slides = Slide.where(:course_id => params[:course_id])
       @number = @all_slides.all.order(:id => :asc)
     else
       @category_id = Category.find_by(chapter: params[:category]).id
-      @slides = Slide.where(:course_id => params[:course_id], :category => @category_id).paginate(page: params[:page], per_page: 2)
+      @slides = Slide.where(:course_id => params[:course_id], :category => @category_id).paginate(page: params[:page], per_page: 25)
       @all_slides = Slide.where(:course_id => params[:course_id])
       @number = @all_slides.all.order(:id => :asc)
     end
