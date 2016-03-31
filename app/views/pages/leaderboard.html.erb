@@ -1,6 +1,6 @@
  <h1 class="page-header"><span class="glyphicon glyphicon-stats"></span> Leaderboard</h1>
 
-<h3>Most valuable User</h3>
+<h3>Top 5 Most valuable users</h3>
 
 <table class="table table-striped" idd="css-serial">
   <thead>
@@ -20,7 +20,7 @@
         <td></td>
         <td id="link"><%= link_to user.first_name, user_path(user) %></td>
         <!--<td><%= user.last_name %></td>-->        
-        <td><span class="label label-info"><%= user.level %></span></td>
+        <td><span class="<%= user.check_level %>"><%= user.level %></span></td>
         <td><strong><%= user.score %></strong></td>
         <td>
           <% unless user.notes.last.nil? %>

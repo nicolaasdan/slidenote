@@ -1,4 +1,4 @@
 <%= simple_form_for([@slide, @slide.notes.build]) do |f| %>
-  <%= f.input :comment, label: 'Add a note' %>
+  <%= f.input :comment, label: 'Add a note', input_html: {:rows => 10} %>
   <%= f.button :submit %>
 <% end %>

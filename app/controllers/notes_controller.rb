@@ -21,11 +21,11 @@ class NotesController < ApplicationController
   	    redirect_to :back        
   	  else
   	    redirect_to :back
-        flash[:alert] = "Please make sure your note contains between 1-140 characters"
+        flash[:alert] = "Please make sure your note contains between 1-2500 characters"
   	  end
     else
       redirect_to :back
-      flash[:alert] ="Only 1 note per slide allowed. Please adjust your existing note"
+      flash[:alert] ="Only 1 note per slide allowed. Please edit your existing note"
     end
   end
 
@@ -78,4 +78,5 @@ class NotesController < ApplicationController
     def find_note
       @note = @slide.notes.find(params[:id])
     end
+
 end

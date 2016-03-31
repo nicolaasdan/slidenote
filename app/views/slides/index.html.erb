@@ -2,9 +2,17 @@
   <%= link_to "New slide", new_course_slide_path(@course) %><br>
 <% end %>
 
-<%= will_paginate @slides %>
+
+<div class="inline pull-left">
+  <%= link_to "Back", overview_course_slides_path(@course), class: "btn btn-default" %>
+</div>
+
+<div style="text-align: center;">
+  <%= will_paginate @slides, class: "apple_pagination" %>
+</div>
 
 <br>
+
 
 <% @slides.order(:id => :asc).each do |slide| %>
 
@@ -13,7 +21,7 @@
     <%= link_to "Delete", course_slide_path(slide.course, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide"} %><br>
   <% end %>
 
-  <%= image_tag slide.image, class: "overview-slides" %><br>
+  <%= link_to image_tag(slide.image), course_slides_path(slide.course, :page => @next_page) ,class: "overview-slides" %><br>
 
   <%#= link_to "Add Note", new_slide_note_path(slide) %>
 

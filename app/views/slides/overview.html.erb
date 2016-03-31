@@ -1,7 +1,13 @@
-<h1 class="page-header">Overview
+<h1 class="page-header">
+  Overview
+  <% unless @category_id.nil? %>
+    <small>Chapter <%= @category_id %></small>
+  <% end %>
+
   <small>
+    <span class="inline pull-right">
     <li class="dropdown" style="display: inline">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Chapter <span class="caret"></span></a>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Choose chapter <span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu">
         <% Category.all.each do |category| %>
           <li>
@@ -10,8 +16,15 @@
         <% end %>
       </ul>
     </li>
+  </span>
   </small>
 </h1>
+
+<div style="text-align: center;">
+  <%= will_paginate @slides, class: "apple_pagination" %>
+</div>
+
+<br>
 
 <% @slides.order(:id => :asc).each do |slide| %>
   <div class="col-md-3">

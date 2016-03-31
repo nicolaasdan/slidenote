@@ -1,6 +1,9 @@
  <div class="panel panel-default">
    <div class="panel-body">
-    <small><strong id="link"><%= link_to note.user.first_name, user_path(note.user) %></strong> <span class="label label-info"><%= note.user.level %></span></small>
+    <small><strong id="link"><%= link_to note.user.first_name, user_path(note.user) %></strong> <span class="<%= note.user.check_level %>"><%= note.user.level %></span></small>
+
+    <span class="inline pull-right">
+    <small><i>Posted <%= time_ago_in_words(note.created_at) %> ago &nbsp; &nbsp;</i> </small>
 
     <div class="btn-group inline pull-right">
       <%= link_to like_slide_note_path(note.slide, note), method: :put, class: "btn btn-success btn-sm" do %>
@@ -14,13 +17,15 @@
 	  <% end %>
 	</div>
 
+	</span>
+
     <p style="white-space: pre-wrap;"><%= sanitize note.comment %></p>
 	<%#= note.slide_id %>
 	<%#= note.id %>
 
 	<% if note.user_id == current_user.id %>
-	  <%= link_to "edit", edit_slide_note_path(note.slide_id, note.id) %>
-	  <%= link_to "delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
+	  <%= link_to "Edit", edit_slide_note_path(note.slide_id, note.id) %>
+	  <%= link_to "Delete", slide_note_path(note.slide_id, note.id), method: :delete, data: { confirm: "are you sure you want to delete this note?"} %>
 	<% end %>
   </div>
 </div>

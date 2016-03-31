@@ -21,7 +21,7 @@
     <dt>Total score: </dt>
     <dd><%= @user.score %></dd>
     <dt>Level: </dt>
-    <dd><span class="label label-info"><%= @user.level %></span></dd>
+    <dd><span class="<%= @user.check_level %>"><%= @user.level %></span></dd>
   </dl>
 </div>
 

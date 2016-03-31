@@ -31,12 +31,16 @@ class User < ActiveRecord::Base
   def check_level
     if self.score >= 10
       self.update(:level => "Laureaat")
+      return "label label-info"
     elsif self.score >= 5
       self.update(:level => "Alumnus")
+      return "label label-primary"
     elsif self.score >= 0
       self.update(:level => "Student")
-    elsif self.update < 0
-      self.update(:level => "onder nul")
+      return "label label-default"
+    elsif self.score < 0
+      self.update(:level => "Student")
+      return "label label-danger"
     end
   end
 

@@ -1,6 +1,6 @@
 <p>Edit note</p>
 
 <%= simple_form_for([@slide, @note]) do |f| %>
-  <%= f.input :comment %>
+  <%= f.input :comment, input_html: {:rows => 20}, placeholder: 'Add HTML tags to style your note: <h1>Heading 1</h1>, <b>bold</b>, <i>Italic</i>,...' %>
   <%= f.button :submit %>
 <% end %>
