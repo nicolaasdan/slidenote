@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:leaderboard]
-  layout 'welcome'
+  layout 'pages'
   
   def home
     @slides = Slide.all.where("amount_of_notes > ?", 1)
@@ -11,9 +11,13 @@ class PagesController < ApplicationController
   end
 
   def welcome
+    render layout: 'welcome'
   end
 
   def aboutus
+  end
+
+  def faq
   end
 
   def leaderboard

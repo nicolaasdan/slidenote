@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get 'home' => 'pages#home', as: 'home'
   get 'users/:id' => 'users#show', as: 'user'
   get 'aboutus' => 'pages#aboutus', as: 'aboutus'
+  get 'faq' => 'pages#faq', as: 'faq'
+  get 'contact' => 'pages#contact', as: 'contact'
+  get 'terms' => 'pages#terms', as: 'terms'
+  get 'privacy' => 'pages#privacy', as: 'privacy'
   get 'leaderboard' => 'pages#leaderboard', as: 'leaderboard'
   
 

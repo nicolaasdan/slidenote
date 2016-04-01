@@ -8,6 +8,7 @@
 </head>
 <body id="welcome_body">
 
+<div class="hidden-xs hidden-sm">
 <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -34,13 +35,13 @@
   </div>
 </nav>
 
-<div class="col-sm-4 col-md-offset-1" style="margin-top: 100px;" id="welcome_message">
+<div class="col-sm-4 col-md-offset-1" style="margin-top: 80px;" id="welcome_message">
   <h1>Welcome to Slidenote!</h1>
   <p>Slidenote is an online course filled with notes by students in your class!</p>
   <p>To get started, fill in the Sign Up form. If you have already registered, you can log in.</p>
 </div>
 
-<div class="col-sm-4 col-md-offset-1" style="margin-top: 100px;" id="welcome_signin">
+<div class="col-sm-4 col-md-offset-1" style="margin-top: 80px; margin-bottom: 65px;" id="welcome_signin">
 
   <div ="container">
     <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
@@ -49,14 +50,33 @@
   <%= yield %>
 </div>
 
+</div>
+
+<div class="hidden-lg hidden-md">
+  <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="padding: 0; margin: 0;">
+          <%= link_to image_tag("slidenotelogo3.png", size: "115x47", alt: "Brand"), root_path %>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <h1>Welcome to Slidenote!</h1>
+  <div class="alert alert-warning"><p>Please consider using this website on a bigger screen for a better experience</p></div>
+
+  <%= render 'devise/sessions/new' %>
+</div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
-  <div class="container" style="text-align: center;">
-    <p style="display: inline">About </p>
-    <p style="display: inline">F.a.q.</p>
-    <p style="display: inline">Contact</p>
-    <p style="display: inline">Terms</p>
-    <p style="display: inline">Privacy</p>
+  <div class="container" style="text-align: center; padding-top: 10px;">
+    <%= link_to "About", aboutus_path %> &nbsp
+    <%= link_to "Faq", faq_path %> &nbsp
+    <%= link_to "Contact", contact_path %>&nbsp
+    <%= link_to "Terms", terms_path %>&nbsp
+    <%= link_to "Privacy", privacy_path %>
   </div>
 </nav>
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slidenote</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="padding: 0; margin: 0;">
+          <%= link_to image_tag("slidenotelogo3.png", size: "115x47", alt: "Brand"), root_path %>
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+<div class="col-sm-8 col-md-offset-2" style="margin-top: 80px; margin-bottom: 65px;">
+
+  <div ="container">
+    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+  </div>
+  <%= yield %>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container" style="text-align: center; padding-top: 10px;">
+    <%= link_to "About", aboutus_path %> &nbsp
+    <%= link_to "Faq", faq_path %> &nbsp
+    <%= link_to "Contact", contact_path %>&nbsp
+    <%= link_to "Terms", terms_path %>&nbsp
+    <%= link_to "Privacy", privacy_path %>
+  </div>
+</nav>
+
+</body>
+</html>
