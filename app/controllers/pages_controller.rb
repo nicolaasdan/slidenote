@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   layout 'welcome'
   
   def home
-    @slides = Slide.all.where("amount_of_notes > ?", 0)
+    @slides = Slide.all.where("amount_of_notes > ?", 1)
     @post = Post.last
     @number = @slides.all
   

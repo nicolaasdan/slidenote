@@ -24,16 +24,18 @@
     </div>
   </nav>
   
-  <div class="container">
-    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
-  </div>
   
-  <div class="col-md-6" id="slides">
+  <div class="col-sm-6" id="slides">
     <%= yield %>
   </div>
 
-  <div class="col-md-6" id="comments">
+  <div class="col-sm-6" id="comments">
+
+  <div class="container-fluid">
+    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+  </div>
+
     <% @slides.order(:id => :asc).each do |slide| %>
       <%= render slide.notes.order(:cached_votes_up => :desc) %>
 
