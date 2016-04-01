@@ -1,40 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NotitiesApp</title>
+  <title>Slidenote</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="welcome_body">
 
 <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to image_tag("slidenotelogo3.png", size: "115x47", alt: "Brand"), root_path %>
+      <%= link_to image_tag("slidenotelogo3.png", size: "230x94", alt: "Brand", :class => "hidden-xs"), root_path %>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li><%= %>
+          <span>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-horizontal', style: 'padding-top: 25px; padding-bottom: 0px;' }) do |f| %>
+            <div class="form-inline">
+              <%= f.input :email, label: "Email: ",required: false, autofocus: true, :label_html => { style: "color: #bdc3c7; margin-right: 10px;"}, :input_html => {style: "margin-right: 40px;"} %>
+              <%= f.input :password, required: false, label: "Password: ",:label_html => { style: "color: #bdc3c7; margin-right: 10px;"}, :input_html => {style: "margin-right: 40px;"} %>
+              <%= f.button :submit, "Log in", style: 'margin-right: 100px;' %>           
+            </div>
+              <%= f.input :remember_me, :label_html => { style: "color: #bdc3c7; margin-left: 60px;" } , as: :boolean if devise_mapping.rememberable? %>             
+            <% end %>
+          </span>
+        </li>
       <% end %>
     </ul>
   </div>
 </nav>
 
+<div class="col-sm-4 col-md-offset-1" style="margin-top: 100px;" id="welcome_message">
+  <h1>Welcome to Slidenote!</h1>
+  <p>Slidenote is an online course filled with notes by students in your class!</p>
+  <p>To get started, fill in the Sign Up form. If you have already registered, you can log in.</p>
+</div>
 
-
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-4 col-md-offset-1" style="margin-top: 100px;" id="welcome_signin">
 
   <div ="container">
     <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
     <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
   </div>
-
   <%= yield %>
 </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
+  <div class="container" style="text-align: center;">
+    <p style="display: inline">About </p>
+    <p style="display: inline">F.a.q.</p>
+    <p style="display: inline">Contact</p>
+    <p style="display: inline">Terms</p>
+    <p style="display: inline">Privacy</p>
+  </div>
+</nav>
 
 </body>
 </html>
