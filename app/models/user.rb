@@ -22,13 +22,13 @@ class User < ActiveRecord::Base
   def first_name
   	@name_regex = /^([^\.@]+)\.*([^@]*)/
   	first, last = self.email.match(@name_regex).captures
-  	return first
+  	return first.titleize
   end
 
   def last_name
   	@name_regex = /^([^\.@]+)\.*([^@]*)/
   	first, last = self.email.match(@name_regex).captures
-  	return last
+  	return last.titleize
   end
 
   def check_level

@@ -10,7 +10,7 @@ class UserCoursesController < ApplicationController
   	if @user_course.save
   	  redirect_to :back
   	else
-  	  flash[:alert] ="Something went wrong, you did not enroll in course"
+  	  flash[:alert] ="Something went wrong, you did not enroll in the course"
   	end
   end
 
