@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 
   def index
   	@courses = Course.all
+    @user = current_user
     @categories = Category.all
   end
 
@@ -36,6 +37,11 @@ class CoursesController < ApplicationController
   def destroy
   	@course.destroy
   	redirect_to courses_path
+  end
+
+  def all
+    @courses = Course.all
+    @categories = Category.all
   end
 
   private

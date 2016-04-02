@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  has_many :user_courses
+  has_many :courses, through: :user_courses
+
 
   def give_user_score
     @my_array = Array.new

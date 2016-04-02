@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :courses do
+    collection do
+      get 'all', to: "courses#all"
+    end
     resources :slides do
       collection do
         get 'overview', to: "slides#overview"
@@ -25,6 +28,8 @@ Rails.application.routes.draw do
     root to: 'pages#home', as: :authenticated_root
   end
   
+  resources :user_courses, except: [:show, :edit, :update]
+
   root to: "pages#welcome"
 
   get 'home' => 'pages#home', as: 'home'

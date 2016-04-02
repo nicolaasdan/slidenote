@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="custom-bootstrap-menu">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to image_tag("slidenotelogo3.png", size: "230x94", alt: "Brand", :class => "hidden-xs"), root_path %>
+      <%= link_to image_tag("slidenotelogo3.png", size: "115x47", alt: "Brand", :class => "hidden-xs"), root_path %>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
@@ -20,13 +20,13 @@
       <% else %>
         <li><%= %>
           <span>
-            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-horizontal', style: 'padding-top: 25px; padding-bottom: 0px;' }) do |f| %>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), :html => { :class => 'form-horizontal', style: 'padding-top: 10px; padding-bottom: 0px; height: 0;' }) do |f| %>
             <div class="form-inline">
-              <%= f.input :email, label: "Email: ",required: false, autofocus: true, :label_html => { style: "color: #bdc3c7; margin-right: 10px;"}, :input_html => {style: "margin-right: 40px;"} %>
-              <%= f.input :password, required: false, label: "Password: ",:label_html => { style: "color: #bdc3c7; margin-right: 10px;"}, :input_html => {style: "margin-right: 40px;"} %>
-              <%= f.button :submit, "Log in", style: 'margin-right: 100px;' %>           
+              <%= f.input :email, label: "Email: ",required: false, autofocus: true, :label_html => { style: "color: #bdc3c7; margin-right: 10px; font-size: 12px;"}, :input_html => {style: "margin-right: 40px; height: 25px; font-size: 12px;"} %>
+              <%= f.input :password, required: false, label: "Password: ",:label_html => { style: "color: #bdc3c7; margin-right: 10px; font-size: 12px;"}, :input_html => {style: "margin-right: 40px; height: 25px; font-size: 12px;"} %>
+              <%= f.input :remember_me,:label_html => { style: "color: #bdc3c7; font-size: 12px; margin-right: 50px;" } , as: :boolean if devise_mapping.rememberable? %>             
+              <%= f.button :submit, "Log in", style: 'margin-right: 100px;', class: "btn btn-default btn-sm" %>           
             </div>
-              <%= f.input :remember_me, :label_html => { style: "color: #bdc3c7; margin-left: 60px;" } , as: :boolean if devise_mapping.rememberable? %>             
             <% end %>
           </span>
         </li>
