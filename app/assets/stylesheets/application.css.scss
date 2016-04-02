@@ -113,15 +113,6 @@ body {
    color: #2c3e50;
  }
 
- /*
- * BOTTOM-LINKS (aboutus at the bottom)
- */
-
-#bottom-links{
-  position: absolute;
-  bottom: 20px;
-  color: #2c3e50;
-}
 
 /*
  * CUSTOM NAVBAR
@@ -182,4 +173,29 @@ body {
 
 #welcome_body {
   background: #f5f5f5;
+}
+
+ /*
+ * BOTTOM-LINKS (aboutus at the bottom)
+ */
+
+#bottom-links{
+  position: absolute;
+  bottom: 10px;
+  line-height: 1em;
+  color: #2c3e50;
+  font-size: 10px;
+}
+
+#li-pages{
+  padding: 0;
+  margin: 0;
+  height: 20px;
+}
+
+#copyright{
+  font-size: 9px;
+  margin-left: 22px;
+  margin-top: 8px;
+  bottom: 0px;
 }

@@ -41,8 +41,13 @@ glyphicon glyphicon-book\"></span>&nbsp; My courses".html_safe, courses_path %><
   	      <li id="link"><%= link_to "<span class=\"
 glyphicon glyphicon-bell\"></span>&nbsp; News".html_safe, posts_path %></li>          
   	    </ul>
-  	    <ul class="nav nav-sidebar">
-  	  	  <li  id="bottom-links"><%= link_to 'About us', aboutus_path %></li>
+  	    <ul class="nav nav-sidebar" id="bottom-links">
+  	  	  <li id="li-pages"><%= link_to 'About us', aboutus_path %></li>
+          <li id="li-pages"><%= link_to 'Contact', contact_path %></li>
+          <li id="li-pages"><%= link_to 'Faq', faq_path %></li>
+          <li id="li-pages"><%= link_to 'Privacy', privacy_path %></li>
+          <li id="li-pages"><%= link_to 'Terms', terms_path %></li>
+          <li id="copyright">&copy Nicolaas Danneels <%= Time.now.year %></li>
   	    </ul>
       </div>
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
