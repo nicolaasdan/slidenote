@@ -25,7 +25,7 @@
     <% @slides.order(:amount_of_notes => :desc).limit(5).each do |slide| %>
       <tr>
         <td></td>
-        <td><%= link_to "View slide", course_slides_path(slide.course, :page => slide.course.slides.index(slide).to_i + 1) %></td>
+        <td><%= link_to "View slide", course_slides_path(slide.course, :page => slide.course.slides.order(:id => :asc).index(slide).to_i + 1) %></td>
         <td><%= slide.course.name %></td>
         <td><strong><%= slide.category.chapter %></strong></td>
         <td><%= slide.amount_of_notes %></td>
