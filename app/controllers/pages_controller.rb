@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   layout 'pages'
   
   def home
-    @slides = Slide.all.where("amount_of_notes > ?", 1)
+    @slides = Slide.all.where("amount_of_notes > ?", 1).order(:id => :asc)
     @post = Post.last
     @number = @slides.all
   
