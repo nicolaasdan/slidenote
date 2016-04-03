@@ -17,7 +17,7 @@ class NotesController < ApplicationController
   	@note.user_id = current_user.id
     if current_user.notes.where(:slide_id => @slide).size < 1
   	  if @note.save
-        @note.slide.increment!(:amount_of_notes)
+        @note.slide.update(:amount_of_notes => @note.slide.notes.size)
   	    redirect_to :back        
   	  else
   	    redirect_to :back
