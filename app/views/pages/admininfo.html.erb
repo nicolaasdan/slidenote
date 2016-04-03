@@ -1,0 +1,40 @@
+<h1 class="page-header">Admin</h1>
+
+<h3>General Info</h3>
+<ul>
+  <li>Aantal users = <%= @users.size %></li>
+  <li>Aantal notes = <%= @notes.size %></li>
+  <li>Aantal slides = <%= @slides.size %></li>
+</ul>
+
+
+<h3>All users</h3>
+
+<table class="table table-striped" idd="css-serial">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>User Id</th>
+      <th>email</th>
+      <th>sign in count</th>
+      <th>Current sign in</th>
+      <th>Last Sign in</th>
+      <th>Notes</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td></td>
+        <td><%= user.id%></td>
+        <td><%= user.email %></td>
+        <td><%= user.sign_in_count %></td>
+        <td><%= time_ago_in_words(user.current_sign_in_at) %></td>
+        <td><%= time_ago_in_words(user.last_sign_in_at) %></td>    
+        <td><%= user.notes.size %></td>  
+        <td><%= user.admin%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

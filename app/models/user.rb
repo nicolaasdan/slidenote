@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :user_courses
   has_many :courses, through: :user_courses
 
+  validates_format_of :email, with: /@ugent.be/, message: "Only @ugent.be email allowed"
+
 
   def give_user_score
     @my_array = Array.new
@@ -36,10 +38,10 @@ class User < ActiveRecord::Base
       self.update(:level => "Doctoraatstudent")
       return "label label-success"
     elsif self.score >= 10
-      self.update(:level => "Alumnus")
+      self.update(:level => "Laureaat")
       return "label label-warning"
     elsif self.score >= 5
-      self.update(:level => "Laureaat")
+      self.update(:level => "Alumnus")
       return "label label-info"
     elsif self.score >= 0
       self.update(:level => "Student")

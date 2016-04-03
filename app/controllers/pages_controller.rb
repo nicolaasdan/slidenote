@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:leaderboard]
+  before_action :authenticate_user!, only: [:leaderboard, :home, :admin]
+  before_action :adminfunc, only: [:admininfo]
   layout 'pages'
   
   def home
@@ -29,6 +30,14 @@ class PagesController < ApplicationController
     @usernotes = current_user.notes
 
   	render layout: 'application'  
+  end
+
+  def admininfo
+    @users = User.all.order(:id => :desc)
+    @notes = Note.all
+    @slides = Slide.all
+
+    render layout: 'application'
   end
 end
 

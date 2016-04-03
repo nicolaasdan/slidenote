@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'terms' => 'pages#terms', as: 'terms'
   get 'privacy' => 'pages#privacy', as: 'privacy'
   get 'leaderboard' => 'pages#leaderboard', as: 'leaderboard'
+  get 'admininfo' => 'pages#admininfo', as: 'admininfo'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
