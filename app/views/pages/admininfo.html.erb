@@ -30,8 +30,8 @@
         <td><%= user.id %></td>
         <td><%= user.email %></td>
         <td><% unless user.sign_in_count.nil? %><%= user.sign_in_count %><% end %></td>
-        <td><% unless time_ago_in_words(user.current_sign_in_at).nil? %><%= time_ago_in_words(user.current_sign_in_at) %><% end %></td>
-        <td><% unless time_ago_in_words(user.last_sign_in_at).nil? %><%= time_ago_in_words(user.last_sign_in_at) %><% end %></td>    
+        <td><% unless user.current_sign_in_at.nil? %><%= time_ago_in_words(user.current_sign_in_at) %><% end %></td>
+        <td><% unless user.last_sign_in_at.nil? %><%= time_ago_in_words(user.last_sign_in_at) %><% end %></td>    
         <td><% unless user.notes.size.nil? %><%= user.notes.size %><% end %></td>  
         <td><%= user.admin %></td>
       </tr>
