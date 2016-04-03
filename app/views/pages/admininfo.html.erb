@@ -2,9 +2,9 @@
 
 <h3>General Info</h3>
 <ul>
-  <li>Aantal users = <%= @users.size %></li>
-  <li>Aantal notes = <%= @notes.size %></li>
-  <li>Aantal slides = <%= @slides.size %></li>
+  <li>Aantal users: <%= @users.size %></li>
+  <li>Aantal notes: <%= @notes.size %></li>
+  <li>Aantal slides: <%= @slides.size %></li>
 </ul>
 
 
@@ -27,13 +27,13 @@
     <% @users.each do |user| %>
       <tr>
         <td></td>
-        <td><%= user.id%></td>
+        <td><%= user.id %></td>
         <td><%= user.email %></td>
-        <td><%= user.sign_in_count %></td>
-        <td><%= time_ago_in_words(user.current_sign_in_at) %></td>
-        <td><%= time_ago_in_words(user.last_sign_in_at) %></td>    
-        <td><%= user.notes.size %></td>  
-        <td><%= user.admin%></td>
+        <td><% unless user.sign_in_count.nil? %><%= user.sign_in_count %><% end %></td>
+        <td><% unless time_ago_in_words(user.current_sign_in_at).nil? %><%= time_ago_in_words(user.current_sign_in_at) %><% end %></td>
+        <td><% unless time_ago_in_words(user.last_sign_in_at).nil? %><%= time_ago_in_words(user.last_sign_in_at) %><% end %></td>    
+        <td><% unless user.notes.size.nil? %><%= user.notes.size %><% end %></td>  
+        <td><%= user.admin %></td>
       </tr>
     <% end %>
   </tbody>
