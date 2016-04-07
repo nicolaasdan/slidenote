@@ -32,3 +32,5 @@
     <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %>
   </div>
 <% end %>
+
+<p><%= link_to "Print notes (PDF)", overview_course_slides_path(@course, format: "pdf") %></p>
