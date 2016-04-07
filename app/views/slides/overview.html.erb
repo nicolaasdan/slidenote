@@ -28,6 +28,7 @@
 
 <% @slides.order(:id => :asc).each do |slide| %>
   <div class="col-sm-3">
+    <span class="label label-info"><%= slide.notes.size %> note(s)</span>
     <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %>
   </div>
 <% end %>

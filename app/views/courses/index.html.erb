@@ -1,7 +1,7 @@
 <h1 class="page-header"><span class="glyphicon glyphicon-book"></span> My Courses</h1>
 
 <% if @user.courses.empty? %>
-  <h1>You are currently not enrolled in a course</h1>
+  <h3>You dont have any courses at the moment</h3>
   <p><%= link_to "Click here", all_courses_path %> to enroll in a course and get started!</p>
 <% else%>
 
