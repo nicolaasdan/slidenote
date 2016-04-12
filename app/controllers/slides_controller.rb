@@ -12,17 +12,30 @@ class SlidesController < ApplicationController
   end
 
   def overview 
-    if params[:category].blank?
-      @slides = Slide.where(:course_id => params[:course_id]).paginate(page: params[:page], per_page: 28)
-      @all_slides = Slide.where(:course_id => params[:course_id])
-      @number = @all_slides.all.order(:id => :asc)
-    else
-      @category_id = Category.find_by(chapter: params[:category]).id
-      @slides = Slide.where(:course_id => params[:course_id], :category => @category_id).paginate(page: params[:page], per_page: 28)
-      @all_slides = Slide.where(:course_id => params[:course_id])
-      @number = @all_slides.all.order(:id => :asc)
+
+    respond_to do |format|
+      format.html do
+
+        if params[:category].blank?
+          @slides = Slide.where(:course_id => params[:course_id]).paginate(page: params[:page], per_page: 28)
+          @all_slides = Slide.where(:course_id => params[:course_id])
+          @number = @all_slides.all.order(:id => :asc)
+        else
+          @category_id = Category.find_by(chapter: params[:category]).id
+          @slides = Slide.where(:course_id => params[:course_id], :category => @category_id).paginate(page: params[:page], per_page: 28)
+          @all_slides = Slide.where(:course_id => params[:course_id])
+          @number = @all_slides.all.order(:id => :asc)
+        end
+
+        render layout: "application"
+      end
+
+      format.pdf do
+        pdf = NotePdf.new(@course)
+        send_data pdf.render, filename: "#{@course}_notes.pdf", type: "application/pdf", disposition: 'inline'
+      end
     end
-    render layout: "application"
+
   end
 
   def new
