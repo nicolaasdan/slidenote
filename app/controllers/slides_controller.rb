@@ -31,9 +31,8 @@ class SlidesController < ApplicationController
       end
 
       format.pdf do
-        @allslides = Slide.all.where(:course_id => params[:course_id])
-        pdf = NotePdf.new(@course, @allslides)
-        send_data pdf.render, filename: "#{@course}_notes.pdf", type: "application/pdf", disposition: "inline"
+        pdf = NotePdf.new(@course)
+        send_data pdf.render, filename: "#{@course}_notes.pdf", type: "application/pdf" 
       end
     end
 
