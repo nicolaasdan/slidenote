@@ -32,7 +32,7 @@ class SlidesController < ApplicationController
 
       format.pdf do
         pdf = NotePdf.new(@course)
-        send_data pdf.render, filename: "#{@course}_notes.pdf", type: "application/pdf" 
+        send_data pdf.render, filename: "#{@course}_notes.pdf", type: "application/pdf", disposition: 'inline'
       end
     end
 

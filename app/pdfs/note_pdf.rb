@@ -29,7 +29,8 @@ class NotePdf < Prawn::Document
 
   def show_slides
     @course.slides.each do |slide|
-      image rename_url(slide.image.to_s)
+      image open rename_url(slide.image.to_s)
+      move_down 20
       show_notes(slide)
       start_new_page
     end
@@ -38,7 +39,7 @@ class NotePdf < Prawn::Document
   def show_notes(slide)
     @slide = slide
     @slide.notes.order(:cached_votes_score => :desc).limit(5).each do |note|
-      text note.user.first_name + " ( " + note.cached_votes_score.to_s + " point(s) )"
+      text note.user.first_name + " ( score: " + note.cached_votes_score.to_s + " )"
       stroke_horizontal_rule
       pad(20) { text note.comment }
     end
