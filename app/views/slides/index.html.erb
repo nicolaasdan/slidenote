@@ -7,8 +7,8 @@
   <%= link_to "Back", overview_course_slides_path(@course), class: "btn btn-default" %>
 </div>
 
-<div style="text-align: center;">
-  <%= will_paginate @slides, class: "apple_pagination" %>
+<div>
+  <%= will_paginate @slides, class: "apple_pagination", style: "text-align: center;" %>
 </div>
 
 <br>
@@ -21,7 +21,10 @@
     <%= link_to "Delete", course_slide_path(slide.course, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide"} %><br>
   <% end %>
 
-  <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :page => @next_page) %><br>
+  <%= link_to image_tag(slide.image, class: "index-slides"), course_slides_path(slide.course, :page => @next_page) %><br>
+
+
+
 
 <% end %>
 
