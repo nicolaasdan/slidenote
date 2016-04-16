@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   	self.notes.each do |note|
   	  @my_array.push(note.score)
   	end
-  	#@user_score = @my_array.sum
     self.score = @my_array.sum
   end
 
@@ -57,5 +56,6 @@ class User < ActiveRecord::Base
       return self.score.to_f/self.notes.size.to_f
     end
   end
+
 
 end

@@ -1,0 +1,20 @@
+
+<% @slides.order(:id => :asc).each do |slide| %>
+  <h3>My note:</h3>
+  <% if slide.notes.where(:user_id => current_user).empty? %>
+
+    <%= simple_form_for([slide, slide.notes.build]) do |f| %>
+
+      <%= f.input :comment, label: "You currently have no notes on this slide, add one here:", required: false, input_html: {:rows => 10}, placeholder: 'Add HTML tags to style your note: <h1>Heading 1</h1>, <b>bold</b>, <i>Italic</i>,...' %>
+      <%= f.button :submit, :class => "btn btn-primary" %>
+
+    <% end %>
+  <% end %>
+
+  <%= render slide.notes.where(:user_id => current_user) %>
+  <hr>
+  <h3>Top notes:</h3>
+  <%= render slide.notes.where.not(:user_id => current_user).order(:cached_votes_score => :desc) %>
+
+
+<% end %>

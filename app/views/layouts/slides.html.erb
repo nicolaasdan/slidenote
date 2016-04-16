@@ -35,14 +35,8 @@
     <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
   </div>
 
-    <% @slides.order(:id => :asc).each do |slide| %>
-      <%= render slide.notes.order(:cached_votes_up => :desc) %>
+    <%= render 'notes/myNote' %>
 
-      <%= simple_form_for([slide, slide.notes.build]) do |f| %>
-        <%= f.input :comment, label: "Add a note", required: false, input_html: {:rows => 15}, placeholder: 'Add HTML tags to style your note: <h1>Heading 1</h1>, <b>bold</b>, <i>Italic</i>,...' %>
-        <%= f.button :submit %>
-      <% end %>
-    <% end %>
   </div>
 
 </body>
