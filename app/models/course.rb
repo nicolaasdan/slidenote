@@ -12,6 +12,7 @@ class Course < ActiveRecord::Base
   	    category_array.push(slide.category)
   	  end
   	end
+    category_array.sort
     return category_array
   end
 
