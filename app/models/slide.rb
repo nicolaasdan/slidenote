@@ -4,4 +4,5 @@ class Slide < ActiveRecord::Base
   has_many :notes, dependent: :destroy
   mount_uploader :image, ImageUploader
 
+
 end

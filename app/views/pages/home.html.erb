@@ -12,6 +12,39 @@
 
 
 <div class="col-md-6">
+  <h2 style="text-align: center"><span class="glyphicon glyphicon-stats"></span> Leaderboard</h2>
+  <hr>
+
+  <table class="table table-striped" idd="css-serial">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <!--<th>Last name</th>-->
+      <th>Level</th>
+      <th>Score</th>
+      <th>Latest note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.order(:score => :desc).limit(5).each do |user| %>
+      <tr>
+
+        <td></td>
+        <td id="link"><%= link_to user.first_name, user_path(user) %></td>
+        <!--<td><%= user.last_name %></td>-->        
+        <td><span class="<%= user.check_level %>"><%= user.level %></span></td>
+        <td><strong><%= user.score %></strong></td>
+        <td>
+          <% unless user.notes.last.nil? %>
+            <%= time_ago_in_words(user.notes.last.created_at) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
   <h2 style="text-align: center"><span class="glyphicon glyphicon-fire"></span> Most discussed</h2>
   
   <hr>
@@ -29,7 +62,7 @@
     <% @slides.order(:amount_of_notes => :desc).limit(5).each do |slide| %>
       <tr>
         <td></td>
-        <td><%= link_to "View slide", course_slides_path(slide.course, :page => slide.course.slides.order(:id => :asc).index(slide).to_i + 1) %></td>
+        <td><%= link_to "View slide", course_slides_path(slide.course, :category => slide.category,:page => slide.course.slides.where(:category => params[:category]).order(:id => :asc).index(slide).to_i + 1) %></td>
         <td><%= slide.course.name %></td>
         <td><strong><%= slide.category.chapter %></strong></td>
         <td><%= slide.amount_of_notes %></td>

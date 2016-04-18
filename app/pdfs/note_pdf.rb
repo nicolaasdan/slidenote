@@ -4,15 +4,8 @@ class NotePdf < Prawn::Document
   def initialize(course)
   	super()
   	@course = course
-  	text "Slidenote -- #{@course.name}"
-    #@course_name = rename_course_name(@course.name)
-    #@url = "https://slidenote.s3.amazonaws.com/uploads/slide/image/48/ACF_Session_1_and_2_KM-page-011.jpg"
-  	#image open (@allslides.last.image.to_s), at: [300, 100], with: 100, height: 100
-    #image open ("https://slidenote.s3.amazonaws.com/PDF/PDF/ACF_Session_1_and_2_KM-page-011.jpg")
-    #image open ("https://slidenote.s3.amazonaws.com/uploads/slide/image/48/ACF_Session_1_and_2_KM-page-011.jpg")
-    #image open (rename_url(@url))
-    #image open (@url)
-    #image "#{Rails.root}/app/assets/images/slidenotelogo3.png"
+  	font_size(25) { text "Slidenote -- #{@course.name}" }
+    move_down 20
     show_slides
   end
 
@@ -28,11 +21,14 @@ class NotePdf < Prawn::Document
   end
 
   def show_slides
+    i = 1
     @course.slides.each do |slide|
-      image open rename_url(slide.image.to_s)
+      #image open rename_url(slide.image.to_s)
+      font_size(20) { text "Slide #{i}" }
       move_down 20
       show_notes(slide)
-      start_new_page
+      i += 1
+      #start_new_page
     end
   end
 
@@ -50,8 +46,6 @@ class NotePdf < Prawn::Document
     first, last = self.email.match(@name_regex).captures
     return first.titleize
   end
-
-
 
   #def rename_course_name course_name
     #course_name.gsub!(/\s/, "+")

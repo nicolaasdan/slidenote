@@ -7,6 +7,8 @@ class SlidesController < ApplicationController
   before_action :adminfunc, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    #@category = Category.find_by(chapter: params[:category])
+    #@slides = Slide.where(:course_id => params[:course_id], :category => @category).paginate(page: params[:page], per_page: 1)
     @page = params['page'].to_i
     @next_page = @page + 1 unless(@page >= @slides.count)
   end
@@ -18,12 +20,12 @@ class SlidesController < ApplicationController
 
         if params[:category].blank?
           @slides = Slide.where(:course_id => params[:course_id]).paginate(page: params[:page], per_page: 28)
-          @all_slides = Slide.where(:course_id => params[:course_id])
+          @all_slides = Slide.where(:course_id => params[:course_id], category: params[:category])
           @number = @all_slides.all.order(:id => :asc)
         else
           @category_id = Category.find_by(chapter: params[:category]).id
           @slides = Slide.where(:course_id => params[:course_id], :category => @category_id).paginate(page: params[:page], per_page: 28)
-          @all_slides = Slide.where(:course_id => params[:course_id])
+          @all_slides = Slide.where(:course_id => params[:course_id], category: params[:category])
           @number = @all_slides.all.order(:id => :asc)
         end
 
@@ -88,7 +90,8 @@ class SlidesController < ApplicationController
     end
 
     def find_slides
-      @slides = Slide.where(course_id: params[:course_id]).paginate(page: params[:page], per_page: 1)
+      @category = Category.find_by(chapter: params[:category])
+      @slides = Slide.where(course_id: params[:course_id], :category => @category).paginate(page: params[:page], per_page: 1)
     end
 
     def find_slides_overview

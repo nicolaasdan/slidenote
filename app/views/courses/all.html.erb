@@ -3,8 +3,6 @@
 <% @courses.each do |course| %>
   <h3><strong><%= course.name %></strong></h3>
 
-	  <p><%= sanitize course.description %></p>
-
 	  <% if current_user.user_courses.where(course_id: course.id).first.nil? %>
 	    <%#= link_to "Add to My courses", user_courses_path(user: current_user, course_id: course.id), class: "btn btn-success", method: :post %>
 	    <%#= current_user.courses.size %>

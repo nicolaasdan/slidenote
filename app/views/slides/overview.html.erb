@@ -1,8 +1,6 @@
 <h1 class="page-header">
-  Overview
-  <% unless @category_id.nil? %>
-    <small>Chapter <%= @category_id %></small>
-  <% end %>
+  Chapter <%= @category_id %>
+  <small>Overview</small>
 
   <small>
     <span class="inline pull-right">
@@ -20,6 +18,9 @@
   </small>
 </h1>
 
+<%= link_to "Back", courses_path %>
+
+
 <div style="text-align: center;">
   <%= will_paginate @slides, class: "apple_pagination" %>
 </div>
@@ -29,7 +30,7 @@
 <% @slides.order(:id => :asc).each do |slide| %>
   <div class="col-sm-3">
     <%#= slide.notes.size %>
-    <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :page => @number.index(slide).to_i + 1) %>
+    <%= link_to image_tag(slide.image, class: "overview-slides"), course_slides_path(slide.course, :category => slide.category, :page => @number.index(slide).to_i + 1) %>
 
   </div>
 <% end %>

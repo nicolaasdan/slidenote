@@ -4,7 +4,7 @@
 
 
 <div class="inline pull-left">
-  <%= link_to "Back", overview_course_slides_path(@course), class: "btn btn-default" %>
+  <%= link_to "Back", overview_course_slides_path(@course, :category => params[:category]), class: "btn btn-default" %>
 </div>
 
 <div>
@@ -14,16 +14,19 @@
 <br>
 
 
-<% @slides.order(:id => :asc).each do |slide| %>
+<% if @slides.empty? %>
+  <h1>This course does not (yet) contain slides for this chapter</h1>
 
-  <% if current_user.admin? %>
-    <%= link_to "Edit", edit_course_slide_path(slide.course, slide)%>
-    <%= link_to "Delete", course_slide_path(slide.course, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide"} %><br>
-  <% end %>
+<% else %>
+  <% @slides.order(:id => :asc).each do |slide| %>
 
-  <%= link_to image_tag(slide.image, class: "index-slides"), course_slides_path(slide.course, :page => @next_page) %><br>
+    <% if current_user.admin? %>
+      <%= link_to "Edit", edit_course_slide_path(slide.course, slide)%>
+      <%= link_to "Delete", course_slide_path(slide.course, slide), method: :delete, data: { confirm: "Are you sure you want to delete this slide"} %><br>
+    <% end %>
 
-
+    <%= link_to image_tag(slide.image, class: "index-slides"), course_slides_path(slide.course, :category => slide.category, :page => @next_page) %><br>
+<% end %>
 
 
 <% end %>

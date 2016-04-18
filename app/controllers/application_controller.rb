@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user 
 
   def after_sign_in_path_for(resource_or_scope)
-    courses_path
+    root_path
   end
 
   protected

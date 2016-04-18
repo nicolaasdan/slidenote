@@ -10,10 +10,12 @@
 
 	    <p><%= sanitize course.description %></p>
 	    
-  	  <%= link_to "All slides", overview_course_slides_path(course), class: "btn btn-primary" %>
+  	  <%= link_to "Slides Overview", overview_course_slides_path(course, category: 1), class: "btn btn-primary" %>
 
 	    <% @categories.each do |category| %>
-	      <%= link_to "H#{category.chapter}", overview_course_slides_path(course, :category => category), class: "btn btn-default"%>
+	      <%#= link_to "H#{category.chapter}", overview_course_slides_path(course, :category => category), class: "btn btn-default"%>
+	      <%#= link_to "h#{category.chapter}", course_slides_path(course, :category => category, :page => course.slides.index(course.slides.where(:category => category).first).to_i + 1) %>
+	      <%= link_to "h#{category.chapter}", course_slides_path(course, category: category, page: 1), class: "btn btn-default" %>
 	    <% end %>
 
 	    <% if current_user.admin? %>

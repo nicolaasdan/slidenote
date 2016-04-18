@@ -7,6 +7,12 @@ class PagesController < ApplicationController
     @slides = Slide.all.where("amount_of_notes > ?", 1)
     @post = Post.last
     @number = @slides.all
+    @users = User.all
+    @user = User.last
+    @notes = Note.all
+    @ary = Array.new
+    @my_array = Array.new
+    @usernotes = current_user.notes
   
     render layout: 'application'
   end

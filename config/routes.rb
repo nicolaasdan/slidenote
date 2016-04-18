@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  authenticated :user do
+    root to: 'pages#home', as: :authenticated_root
+  end
+
+  root to: "pages#welcome"
 
   devise_for :users
 
@@ -23,14 +28,8 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-
-  authenticated :user do
-    root to: 'pages#home', as: :authenticated_root
-  end
   
   resources :user_courses, except: [:show, :edit, :update]
-
-  root to: "pages#welcome"
 
   get 'home' => 'pages#home', as: 'home'
   get 'users/:id' => 'users#show', as: 'user'
