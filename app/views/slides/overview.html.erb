@@ -18,7 +18,8 @@
   </small>
 </h1>
 
-<%= link_to "Back", courses_path %>
+<%#= link_to "Back", courses_path %>
+<%= link_to "(View notes in pdf)", overview_course_slides_path(@course, format: "pdf") %>
 
 
 <div style="text-align: center;">

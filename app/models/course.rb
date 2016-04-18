@@ -5,5 +5,15 @@ class Course < ActiveRecord::Base
 
   cattr_accessor :current_user
 
+  def available_categories
+  	category_array = []
+  	self.slides.each do |slide|
+  	  unless slide.category.in?(category_array)
+  	    category_array.push(slide.category)
+  	  end
+  	end
+    return category_array
+  end
+
 
 end
