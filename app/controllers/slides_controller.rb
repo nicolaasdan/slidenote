@@ -11,6 +11,8 @@ class SlidesController < ApplicationController
     #@slides = Slide.where(:course_id => params[:course_id], :category => @category).paginate(page: params[:page], per_page: 1)
     @page = params['page'].to_i
     @next_page = @page + 1 unless(@page >= @slides.count)
+    @scrollslides = Slide.where(:course_id => params[:course_id], :category => params[:category])
+    @numberscrollslides = @scrollslides.all.order(:id => :asc)
   end
 
   def overview 

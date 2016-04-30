@@ -3,15 +3,10 @@
 <% end %>
 
 
-<div class="inline pull-left">
-  <%= link_to "Back", courses_path %>
-</div>
 
 <div>
-  <%= will_paginate @slides, class: "apple_pagination", style: "text-align: center;" %>
+  <% will_paginate @slides, class: "apple_pagination", style: "text-align: center;" %>
 </div>
-
-<br>
 
 
 <% if @slides.empty? %>
@@ -30,4 +25,15 @@
 
 
 <% end %>
+
+<div class="col-md-12" id='slidescroller'>
+  <div class="inline pull-left">
+    <%= link_to "Back", courses_path %>
+  </div>
+  <% @scrollslides.each do |slide| %>
+    <%= link_to image_tag(slide.image, class: "slidescrollerimage"), course_slides_path(slide.course, :category => slide.category, :page => @numberscrollslides.index(slide).to_i + 1) %>
+  <% end %>
+</div>
+
+
 
