@@ -51,6 +51,8 @@
   overflow-y: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .slidescrollerimage {
