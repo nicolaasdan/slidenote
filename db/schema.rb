@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401151209) do
+ActiveRecord::Schema.define(version: 20160525123631) do
 
   create_table "categories", force: :cascade do |t|
     t.integer  "chapter"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20160401151209) do
   add_index "notes", ["cached_votes_score"], name: "index_notes_on_cached_votes_score"
   add_index "notes", ["cached_votes_total"], name: "index_notes_on_cached_votes_total"
   add_index "notes", ["cached_votes_up"], name: "index_notes_on_cached_votes_up"
+
+  create_table "polls", force: :cascade do |t|
+    t.text     "feedback"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.string   "stringanswer"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

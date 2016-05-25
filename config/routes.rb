@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts
+  resources :polls, only: [:new, :create, :destroy]
   
   resources :user_courses, except: [:show, :edit, :update]
 

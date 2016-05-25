@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @ary = Array.new
     @my_array = Array.new
     @usernotes = current_user.notes
-  
+
     render layout: 'application'
   end
 
@@ -42,6 +42,8 @@ class PagesController < ApplicationController
     @users = User.all.order(:id => :desc)
     @notes = Note.all
     @slides = Slide.all
+    @polls = Poll.all
+
 
     render layout: 'application'
   end

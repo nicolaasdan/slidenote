@@ -1,11 +1,20 @@
 <h1 class="page-header">Admin</h1>
 
+<div class="col-md-6">
 <h3>General Info</h3>
 <ul>
   <li>Aantal users: <%= @users.size %></li>
   <li>Aantal notes: <%= @notes.size %></li>
   <li>Aantal slides: <%= @slides.size %></li>
 </ul>
+</div>
+
+<div class="col-md-6">
+  <h3>Feedback</h3>
+  <p>aantal keren: "ja, kzou het gebruiken id les" <%= @polls.where(stringanswer: "ja, ik zou het gebruiken in de les").size %></p>
+  <p>aantal keren: "ja, maar ik zou het niet gebruiken in de les" <%= @polls.where(stringanswer: "ja, maar ik zou het niet gebruiken in de les").size %></p>
+  <p>aantal keren: "nee, ik zou dit niet gebruiken" <%= @polls.where(stringanswer: "nee, ik zou dit niet gebruiken").size %></p>
+</div>
 
 
 <h3>All users</h3>
@@ -20,6 +29,7 @@
       <th>Current sign in</th>
       <th>Last Sign in</th>
       <th>Notes</th>
+      <th>Feedback</th>
       <th>Admin</th>
     </tr>
   </thead>
@@ -32,7 +42,8 @@
         <td><% unless user.sign_in_count.nil? %><%= user.sign_in_count %><% end %></td>
         <td><% unless user.current_sign_in_at.nil? %><%= time_ago_in_words(user.current_sign_in_at) %><% end %></td>
         <td><% unless user.last_sign_in_at.nil? %><%= time_ago_in_words(user.last_sign_in_at) %><% end %></td>    
-        <td><% unless user.notes.size.nil? %><%= user.notes.size %><% end %></td>  
+        <td><% unless user.notes.size.nil? %><%= user.notes.size %><% end %></td>
+        <td><% unless user.polls.last.nil? %><%= user.polls.last.feedback %><% end %></td>
         <td><%= user.admin %></td>
       </tr>
     <% end %>

@@ -1,0 +1,7 @@
+<h2>Vul hier uw feedback in</h2>
+
+<%= simple_form_for current_user.polls.build do |f| %>
+  <%= f.input :stringanswer, collection: [ "ja, ik zou het gebruiken in de les", "ja, maar ik zou het niet gebruiken in de les", "nee, ik zou dit niet gebruiken"], label: "Zou u dergelijke website gebruiken? Kies hieronder uw antwoord" %>
+  <%= f.input :feedback, label: "Dit is voor extra feedback, tips, commentaar...", input_html: {:rows => 10} %>
+  <%= f.button :submit, "submit" %>
+<% end %>

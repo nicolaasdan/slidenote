@@ -8,6 +8,16 @@
     <h4><%= @post.title %></h4>
     <p style="white-space: pre-wrap;"><%= @post.body %></p>
   </div>
+
+  <div class="alert alert-success">
+    <% if current_user.polls.size == 0 %>
+      <%= render 'polls/new' %>
+    <% else %>
+      <br>
+      <h2>Bedankt voor de feedback!</h2>
+      <p><%= link_to "Vul feedback opnieuw in", poll_path(current_user.polls.last), method: :delete, data: { confirm: "Uw vorige feedback wordt verwijderd, bent u zeker?"} %></p>
+    <% end %>
+  </div>
 </div>
 
 
